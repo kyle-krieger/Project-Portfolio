@@ -3101,20 +3101,23 @@ input, select, textarea {
 
 /* Pagination */
 
-	.pagination {
-		display: -moz-inline-flex;
-		display: -webkit-inline-flex;
-		display: -ms-inline-flex;
-		display: inline-flex;
-		-moz-user-select: none;
-		-webkit-user-select: none;
-		-ms-user-select: none;
-		user-select: none;
-		cursor: default;
-		list-style: none;
-		margin: 0 0 2rem 2px;
-		padding: 0;
-	}
+.pagination {
+	display: -moz-inline-flex;
+	display: -webkit-inline-flex;
+	display: -ms-inline-flex;
+	display: inline-flex;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	cursor: default;
+	list-style: none;
+	margin: 0 0 2rem 2px;
+	padding: 0;
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+}
 
 		.pagination a, .pagination span {
 			-moz-transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, color 0.2s ease-in-out;
