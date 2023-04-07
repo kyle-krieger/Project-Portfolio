@@ -76,52 +76,75 @@
 								<img src="images/mariusz-pierog-EqPRDrddtaQ-unsplash.jpg">
 							</span>
 							Meet Divvy, a ride-share company owned by the Chicago Department of Transit (CDOT) and operated in partnership with Lyft. Divvy serves the cities of Chicago and <a href="https://ride.divvybikes.com/explore-chicago/expansion/evanston">Evanstan</a>
-							with recent expansions in the <a href=:"https://ride.divvybikes.com/explore-chicago/expansion">Far South Side of Chicago in 2020</a> as well as both <a href=:"https://ride.divvybikes.com/blog/divvy-2021-expansion">Northwest and Southwest Chicago
-							in 2021</a>. More recently, Divvy redesigned their <a href="https://ride.divvybikes.com/blog/new-divvy-ebike">ebike</a> and through partnership with Skyhook Solar, in 2022, they launched <a href=:"https://ride.divvybikes.com/blog/solar-stations">
+							with recent expansions in the <a href="https://ride.divvybikes.com/explore-chicago/expansion">Far South Side of Chicago in 2020</a> as well as both <a href="https://ride.divvybikes.com/blog/divvy-2021-expansion">Northwest and Southwest Chicago
+							in 2021</a>. More recently, Divvy redesigned their <a href="https://ride.divvybikes.com/blog/new-divvy-ebike">ebike</a> and through partnership with Skyhook Solar, in 2022, they launched <a href="https://ride.divvybikes.com/blog/solar-stations">
 							solar powered ebike canopy docking stations</a>. Their mission is to provide a convenient alternative for consumers to travel Chicago. To do this, they have both pedal (classical) and electrical bikes (ebikes) ready on demand for rent to consumers. Divvy’s subscription model is in the 
 							form of guest passes (single-use or per day) or through an annual membership.
 						 </p>
+						 
 						<h3>data, methodology, and tools</h3>
-						<p>
-							This case study uses 12-months internal, first-party collected data between February 2022 - January 2023 provided by <a href=:"https://divvy-tripdata.s3.amazonaws.com/index.html">Divvy</a> under this <a href=:"https://ride.divvybikes.com/data-license-agreement">license.</a>
-							Each row of data is comprised of anonymized metadata under the domains of: time, location, and type. The data given is presented in the form of .csv spreadsheets broken up by month of occurance.
-							The methodology guiding this case study follows the teachings of the Google Data Analytics Professional Certification, which is: <strong>Ask, Prepare, Process, Analyze, Share, and Act</strong>.
-							For this study, I utilized the programming languages: Python, SQL, and VBA.
-						</p>
+							<p>
+								This case study uses 12-months internal, first-party collected data between February 2022 - January 2023 provided by <a href="https://divvy-tripdata.s3.amazonaws.com/index.html">Divvy</a> under this <a href="https://ride.divvybikes.com/data-license-agreement">license.</a>
+								Each row of data is comprised of anonymized metadata under the domains of: time, location, and type. The data given is presented in the form of .csv spreadsheets broken up by month of occurance.
+								The methodology guiding this case study follows the teachings of the Google Data Analytics Professional Certification, which is: <strong>Ask, Prepare, Process, Analyze, Share, and Act</strong>.
+								For this study, I utilized the programming languages: Python, SQL, and VBA.
+							</p>
+						
 						<h3>Ask</h3>
-						<p>
 							<ul>
 								<li>Identify historical trends for casual bike riders</li>
 								<li>Determine factors that influence casual riders into buying annual memberships</li>
 								<li>Use insights from historical trends and factors associated with casual riders buying annual memberships to improve the casual rider to annual membership conversion rate via digital media.</li>
 							</ul>
-						</p>
+							
 						<h3>Prepare</h3>
-						<p>
-							After collecting the twelve internal data spreadsheets from Divvy, I aggregated them into a SQL Server table using Python (Pyodbc and Pandas). 
-							<a href=:"https://gist.github.com/kyle-krieger/856c6aca0a19c1a3b14f8199626d9966">Python code visible here</a>
-						</p>
+							<p>
+								After collecting the twelve internal data spreadsheets from Divvy, I aggregated them into a SQL Server table using Python (Pyodbc and Pandas). 
+								The move from spreadsheets to SQL was chosen due to the size limitations of Microsoft Excel being 1,048,576 rows, whereas the aggregated dataset contained 5,754,248 rows.
+								<a href="https://gist.github.com/kyle-krieger/856c6aca0a19c1a3b14f8199626d9966">code available on GitHub here.</a>
+							</p>
+						
 						<h3>Process</h3>
-						<p>
-							test
-						</p>
+							<p>
+								Through inspecting the dataset more closely, I noticed that the location domain of the data had not been recorded on some records (reported as null). Also, the location coordinates on some instances were not as accurate as others.
+								Thus to normalize and reinforce data integrity I limited the scope of this project to focus only on the domains of time and type rather than removing the observations all together. To accomplish this, I wrote a VBA macro that iterates through a folder, opens the .CSV files, removes the location data,
+								and parses and typecasts the custom type variable to a more SQL-friendly integer and datetime data types. 
+								<a href="https://gist.github.com/kyle-krieger/15bacd6a0a46be31d642f88eba86a36e">code available on GitHub here.</a>
+							</p>
+						
 						<h3>Analyze</h3>
-						<p>
-							test
-						</p>
+							<ul>
+								<li>There is a 46.9% increase in guest rentals on weekends vs weekdays.</li>
+								<li>Annual membership users' peak hours during weekdays coinside with expected commuter hours (7:00am - 8:59am / 3:00pm - 6:59 pm).</li>
+								<li>Both casual and annual members follow similar trends during weekends with peaks rentals occuring during daylight hours (10:00am - 6:59pm).</li>
+								<li>Centeral tendency information on trip duration (guest): 
+									Mean - 22.3 minutes, 
+									Median - 13 minutes, 
+									Mode - 7 minutes. </li>
+								<li>Centeral tendency infromation on trip duration (members): 
+									Mean - 12.3 minutes, 
+									Median - 9 minutes, 
+									Mode - 5 minutes. </li>								
+							</ul>
+						
 						<h3>Share</h3>
 						<p>
-							test
+						<br /><br />
+							<span class="image center">
+								<img src="images/dataviz-Divvy_weekend.png">
+								<img src="images/Divvy_Weekday.png">
+								<img src="images/Divvy_Weekend.png">
+							</span>
 						</p>
+						
 						<h3>Act</h3>
 						<p>
 							test
 						</p>
 
 
-						<span class="image right">
-								<img src="images/dataviz-Divvy_weekend.png">
-							</span>
+
+								
 					</div>
 
 				<!-- Copyright -->
